@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Schedule | Southside Family Medical Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B3A2B; --forest-mid: #254D3A; --sage: #5B8B6A;
+      --amber: #B87418; --amber-light: #D4941A;
+      --cream: #F5F2EB; --cream-dark: #EAE6DC;
+      --charcoal: #262626; --muted: #687068; --white: #FAFAF8;
+      --font-serif: 'Lora', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(27,58,43,0.97); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 66px; border-bottom: 1px solid rgba(91,139,106,0.25); }
+    .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); text-decoration: none; }
+    .nav-logo em { font-style: normal; color: var(--amber-light); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a { color: rgba(250,250,248,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-light); }
+    .nav-cta { background: var(--amber) !important; color: var(--white) !important; padding: 0.45rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .page-hero { background: var(--forest); padding: 8.5rem 2.5rem 4.5rem; }
+    .page-hero-inner { max-width: 1180px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.75rem; color: rgba(250,250,248,0.45); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--amber-light); text-decoration: none; }
+    .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.18; max-width: 640px; }
+    .page-hero h1 em { font-style: italic; color: var(--amber-light); }
+    .page-hero p { font-size: 1.05rem; color: rgba(250,250,248,0.68); max-width: 500px; margin-top: 1rem; line-height: 1.75; font-weight: 300; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .section { padding: 5rem 2.5rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.65rem; }
+    .section-h { font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--forest); line-height: 1.22; margin-bottom: 0.9rem; }
+    .section-h em { font-style: italic; color: var(--amber); }
+
+    /* Contact layout */
+    .contact-section { background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4.5rem; align-items: start; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .info-col h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--forest); margin-bottom: 1.5rem; }
+    .info-block { margin-bottom: 2rem; }
+    .info-block h3 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.75rem; }
+    .info-row { display: flex; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.9rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-weight: 600; color: var(--charcoal); min-width: 80px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 0.1rem; flex-shrink: 0; }
+    .info-val { color: var(--muted); }
+    .info-val a { color: var(--amber); text-decoration: none; }
+
+    .phone-cta {
+      background: var(--forest); border-radius: 8px; padding: 1.75rem;
+      text-align: center; margin-top: 2rem;
+    }
+    .phone-cta p { color: rgba(250,250,248,0.65); font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .phone-cta a { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 600; color: var(--amber-light); text-decoration: none; display: block; }
+
+    /* Form */
+    .form-col { background: var(--white); border-radius: 8px; padding: 2.5rem; border: 1px solid var(--cream-dark); }
+    .form-col h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--forest); margin-bottom: 0.5rem; }
+    .form-col p { font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--charcoal); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.45rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; font-family: var(--font-sans); font-size: 0.9rem;
+      padding: 0.7rem 1rem; border: 1.5px solid var(--cream-dark);
+      border-radius: 4px; background: var(--cream); color: var(--charcoal);
+      transition: border-color 0.2s; outline: none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--sage); background: var(--white); }
+    .field textarea { resize: vertical; min-height: 110px; }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23687068' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .submit-btn {
+      width: 100%; background: var(--amber); color: var(--white);
+      border: none; font-family: var(--font-sans); font-size: 0.9375rem;
+      font-weight: 600; padding: 0.9rem; border-radius: 4px;
+      cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--amber-light); }
+    .form-note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 0.75rem; }
+
+    footer { background: #0D1A12; padding: 3.5rem 2.5rem 2rem; color: rgba(250,250,248,0.65); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(250,250,248,0.07); }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: 0.855rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber-light); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.45rem; }
+    .footer-col ul li a { color: rgba(250,250,248,0.6); text-decoration: none; font-size: 0.875rem; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-col address { font-style: normal; font-size: 0.875rem; line-height: 1.9; }
+    .footer-col address a { color: var(--amber-light); text-decoration: none; }
+    .footer-bottom { max-width: 1180px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: var(--amber-light); text-decoration: none; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Southside <em>Family Medical</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="physicians.html">Our Physicians</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</p>
+    <h1>Schedule a visit or <em>reach out to our team.</em></h1>
+    <p>We're accepting new patients. Call during business hours or fill out the form below and we'll follow up to get you on the schedule.</p>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="info-col">
+        <h2>Practice Information</h2>
+        <div class="info-block">
+          <h3>Location</h3>
+          <div class="info-row"><span class="info-label">Address</span><span class="info-val">5955 S. Emerson Avenue<br>Suite 100<br>Indianapolis, IN 46237</span></div>
+        </div>
+        <div class="info-block">
+          <h3>Hours</h3>
+          <div class="info-row"><span class="info-label">Doors</span><span class="info-val">Monday – Friday<br>8:00am – 5:00pm</span></div>
+          <div class="info-row"><span class="info-label">Appts</span><span class="info-val">Monday – Friday<br>8:30am – 5:00pm</span></div>
+        </div>
+        <div class="info-block">
+          <h3>Contact</h3>
+          <div class="info-row"><span class="info-label">Fax</span><span class="info-val">317-452-8484</span></div>
+        </div>
+        <div class="phone-cta">
+          <p>Call us to schedule immediately</p>
+          <a href="tel:3174528400">317-452-8400</a>
+        </div>
+      </div>
+
+      <div class="form-col">
+        <h2>Request an Appointment</h2>
+        <p>Fill out the form below and a member of our team will contact you within one business day to confirm your appointment time.</p>
+        <div class="form-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Phone Number</label><input type="tel" placeholder="(317) 555-0100"></div>
+          <div class="field"><label>Email Address</label><input type="email" placeholder="jane@email.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label>Preferred Physician</label>
+            <select>
+              <option value="">No preference</option>
+              <option>Dr. Cynthia Williams</option>
+              <option>Dr. David Williams</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Visit Type</label>
+            <select>
+              <option value="">Select a type</option>
+              <option>New Patient — Wellness Exam</option>
+              <option>Sick / Acute Visit</option>
+              <option>Annual Physical</option>
+              <option>Follow-Up Appointment</option>
+              <option>Lab Work</option>
+              <option>EKG Screening</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>Message (Optional)</label><textarea placeholder="Any additional details, preferred appointment times, or questions for our team…"></textarea></div>
+        <button class="submit-btn" type="button">Submit Appointment Request</button>
+        <p class="form-note">We typically respond within one business day. For urgent concerns, please call us directly at 317-452-8400.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Southside Family Medical Group</h3>
+      <p>Independent family medicine serving Indianapolis's southside — comprehensive, compassionate care for patients of every age.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="physicians.html">Our Physicians</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact &amp; Hours</h4>
+      <address>
+        5955 S. Emerson Avenue, Suite 100<br>Indianapolis, IN 46237<br><br>
+        <a href="tel:3174528400">317-452-8400</a><br>Fax: 317-452-8484<br><br>
+        Mon–Fri: 8:00am – 5:00pm
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Southside Family Medical Group. All rights reserved.</p>
+    <p>Website concept by <a href="#">Pavlina</a></p>
+  </div>
+</footer>
+</body>
+</html>

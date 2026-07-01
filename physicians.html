@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Physicians | Southside Family Medical Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B3A2B; --forest-mid: #254D3A; --sage: #5B8B6A;
+      --amber: #B87418; --amber-light: #D4941A;
+      --cream: #F5F2EB; --cream-dark: #EAE6DC;
+      --charcoal: #262626; --muted: #687068; --white: #FAFAF8;
+      --font-serif: 'Lora', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(27,58,43,0.97); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 66px; border-bottom: 1px solid rgba(91,139,106,0.25); }
+    .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); text-decoration: none; }
+    .nav-logo em { font-style: normal; color: var(--amber-light); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a { color: rgba(250,250,248,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-light); }
+    .nav-cta { background: var(--amber) !important; color: var(--white) !important; padding: 0.45rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .page-hero { background: var(--forest); padding: 8.5rem 2.5rem 4.5rem; }
+    .page-hero-inner { max-width: 1180px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.75rem; color: rgba(250,250,248,0.45); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--amber-light); text-decoration: none; }
+    .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.18; max-width: 640px; }
+    .page-hero h1 em { font-style: italic; color: var(--amber-light); }
+    .page-hero p { font-size: 1.05rem; color: rgba(250,250,248,0.68); max-width: 500px; margin-top: 1rem; line-height: 1.75; font-weight: 300; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .section { padding: 5rem 2.5rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.65rem; }
+    .section-h { font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--forest); line-height: 1.22; margin-bottom: 0.9rem; }
+    .section-h em { font-style: italic; color: var(--amber); }
+
+    .phys-section { background: var(--cream); }
+    .phys-block {
+      display: grid; grid-template-columns: 320px 1fr; gap: 4rem;
+      align-items: start; margin-bottom: 4rem;
+      padding-bottom: 4rem; border-bottom: 1px solid var(--cream-dark);
+    }
+    .phys-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .phys-portrait {
+      background: linear-gradient(140deg, var(--forest) 0%, var(--forest-mid) 60%, var(--sage) 100%);
+      border-radius: 8px; aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .portrait-icon { font-size: 4rem; opacity: 0.4; }
+    .phys-details h2 { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--forest); margin-bottom: 0.3rem; }
+    .phys-tag { font-size: 0.78rem; font-weight: 600; color: var(--sage); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+    .phys-bio { font-size: 0.9875rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; }
+    .phys-attrs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 2rem; }
+    .attr-box { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 5px; padding: 1rem 1.25rem; }
+    .attr-box .attr-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); font-weight: 600; margin-bottom: 0.3rem; }
+    .attr-box .attr-val { font-size: 0.875rem; color: var(--charcoal); font-weight: 500; }
+    @media (max-width: 768px) { .phys-block { grid-template-columns: 1fr; } .phys-attrs { grid-template-columns: 1fr; } }
+
+    .collab-section { background: var(--forest); padding: 5rem 2.5rem; text-align: center; }
+    .collab-section .section-tag { color: var(--amber-light); }
+    .collab-section .section-h { color: var(--white); margin: 0 auto 1rem; }
+    .collab-section p { color: rgba(250,250,248,0.7); max-width: 540px; margin: 0 auto 2.5rem; font-size: 1rem; line-height: 1.75; }
+    .btn-amber { background: var(--amber); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: background 0.2s; display: inline-block; }
+    .btn-amber:hover { background: var(--amber-light); }
+    .btn-ghost { border: 1.5px solid rgba(250,250,248,0.35); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 500; font-size: 0.9375rem; transition: border-color 0.2s; display: inline-block; }
+    .btn-ghost:hover { border-color: rgba(250,250,248,0.75); }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: #0D1A12; padding: 3.5rem 2.5rem 2rem; color: rgba(250,250,248,0.65); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(250,250,248,0.07); }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: 0.855rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber-light); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.45rem; }
+    .footer-col ul li a { color: rgba(250,250,248,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-col address { font-style: normal; font-size: 0.875rem; line-height: 1.9; }
+    .footer-col address a { color: var(--amber-light); text-decoration: none; }
+    .footer-bottom { max-width: 1180px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: var(--amber-light); text-decoration: none; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Southside <em>Family Medical</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="physicians.html">Our Physicians</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Our Physicians</p>
+    <h1>The physicians who <em>know your family.</em></h1>
+    <p>Dr. Cynthia and Dr. David Williams have dedicated their careers to family medicine — delivering board-certified, continuous care to Indianapolis's south side.</p>
+  </div>
+</section>
+
+<section class="section phys-section">
+  <div class="wrap">
+    <p class="section-tag">Our Team</p>
+    <h2 class="section-h" style="margin-bottom: 3rem;">Meet the <em>Williams physicians.</em></h2>
+
+    <div class="phys-block">
+      <div class="phys-portrait"><div class="portrait-icon">👩‍⚕️</div></div>
+      <div class="phys-details">
+        <h2>Dr. Cynthia Williams</h2>
+        <p class="phys-tag">MD · Board-Certified Family Medicine</p>
+        <p class="phys-bio">Dr. Cynthia Williams is a board-certified family medicine physician with a deep commitment to comprehensive, relationship-centered care. She brings both clinical rigor and genuine warmth to every patient encounter — whether it's a wellness exam for a young child or managing a long-term chronic condition for an adult patient.</p>
+        <p class="phys-bio">A cornerstone of Southside Family Medical Group since its founding, Dr. Cynthia believes that knowing a patient's history — and their family's history — is foundational to delivering care that makes a real difference. Her approach is unhurried, thorough, and centered on the patient in front of her.</p>
+        <div class="phys-attrs">
+          <div class="attr-box"><div class="attr-label">Specialty</div><div class="attr-val">Family Medicine</div></div>
+          <div class="attr-box"><div class="attr-label">Certification</div><div class="attr-val">Board-Certified</div></div>
+          <div class="attr-box"><div class="attr-label">Patients</div><div class="attr-val">All Ages Welcome</div></div>
+          <div class="attr-box"><div class="attr-label">Focus</div><div class="attr-val">Preventive & Chronic Care</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phys-block">
+      <div class="phys-portrait"><div class="portrait-icon">👨‍⚕️</div></div>
+      <div class="phys-details">
+        <h2>Dr. David Williams</h2>
+        <p class="phys-tag">MD · Board-Certified Family Medicine</p>
+        <p class="phys-bio">Dr. David Williams is a board-certified family medicine physician with roots in Indianapolis's south side community. He practices evidence-based medicine with a pragmatic, patient-first approach — taking the time to understand not just a diagnosis, but the whole person behind it.</p>
+        <p class="phys-bio">Dr. David has built lasting relationships with patients and families across south Indianapolis over many years of practice. Whether he's evaluating a new symptom, reviewing a complex medication regimen, or providing preventive guidance, he brings the same attentiveness and care to every visit.</p>
+        <div class="phys-attrs">
+          <div class="attr-box"><div class="attr-label">Specialty</div><div class="attr-val">Family Medicine</div></div>
+          <div class="attr-box"><div class="attr-label">Certification</div><div class="attr-val">Board-Certified</div></div>
+          <div class="attr-box"><div class="attr-label">Patients</div><div class="attr-val">All Ages Welcome</div></div>
+          <div class="attr-box"><div class="attr-label">Focus</div><div class="attr-val">Chronic Disease & Acute Care</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collab-section">
+  <div class="wrap">
+    <p class="section-tag">The SFMG Advantage</p>
+    <h2 class="section-h">Two physicians. <em>One coordinated team.</em></h2>
+    <p>Because our physicians share a practice and cover for one another, your family benefits from both physicians' knowledge — and never faces gaps in care when scheduling is tight or your primary doctor is away.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-amber">Schedule a Visit</a>
+      <a href="services.html" class="btn-ghost">Explore Our Services</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Southside Family Medical Group</h3>
+      <p>Independent family medicine serving Indianapolis's southside — comprehensive, compassionate care for patients of every age.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="physicians.html">Our Physicians</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact &amp; Hours</h4>
+      <address>
+        5955 S. Emerson Avenue, Suite 100<br>Indianapolis, IN 46237<br><br>
+        <a href="tel:3174528400">317-452-8400</a><br>Fax: 317-452-8484<br><br>
+        Mon–Fri: 8:00am – 5:00pm
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Southside Family Medical Group. All rights reserved.</p>
+    <p>Website concept by <a href="#">Pavlina</a></p>
+  </div>
+</footer>
+</body>
+</html>

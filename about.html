@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Southside Family Medical Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B3A2B; --forest-mid: #254D3A; --sage: #5B8B6A;
+      --amber: #B87418; --amber-light: #D4941A;
+      --cream: #F5F2EB; --cream-dark: #EAE6DC;
+      --charcoal: #262626; --muted: #687068; --white: #FAFAF8;
+      --font-serif: 'Lora', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(27,58,43,0.97); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 66px; border-bottom: 1px solid rgba(91,139,106,0.25);
+    }
+    .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); text-decoration: none; }
+    .nav-logo em { font-style: normal; color: var(--amber-light); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a { color: rgba(250,250,248,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-light); }
+    .nav-cta { background: var(--amber) !important; color: var(--white) !important; padding: 0.45rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .page-hero {
+      background: var(--forest); padding: 8.5rem 2.5rem 4.5rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: rgba(91,139,106,0.2);
+    }
+    .page-hero-inner { max-width: 1180px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.75rem; color: rgba(250,250,248,0.45); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--amber-light); text-decoration: none; }
+    .page-hero h1 {
+      font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600; color: var(--white); line-height: 1.18; max-width: 650px;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--amber-light); }
+    .page-hero p { font-size: 1.05rem; color: rgba(250,250,248,0.68); max-width: 520px; margin-top: 1.1rem; line-height: 1.75; font-weight: 300; }
+
+    .section { padding: 5rem 2.5rem; }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.65rem; }
+    .section-h { font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--forest); line-height: 1.22; margin-bottom: 0.9rem; }
+    .section-h em { font-style: italic; color: var(--amber); }
+    .prose { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 680px; }
+    .prose + .prose { margin-top: 1.25rem; }
+
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 1.5rem; }
+    .mission-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .stat-box { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 6px; padding: 1.5rem; }
+    .stat-box .num { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; color: var(--forest); }
+    .stat-box .lbl { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    @media (max-width: 768px) { .mission-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .values-section { background: var(--forest); }
+    .values-section .section-tag { color: var(--amber-light); }
+    .values-section .section-h { color: var(--white); }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .val-card { background: rgba(91,139,106,0.1); border: 1px solid rgba(91,139,106,0.18); border-radius: 6px; padding: 1.75rem; }
+    .val-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: rgba(212,148,26,0.35); line-height: 1; margin-bottom: 0.75rem; }
+    .val-card h3 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .val-card p { font-size: 0.875rem; color: rgba(250,250,248,0.62); line-height: 1.65; }
+
+    .location-section { background: var(--cream-dark); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .info-block { background: var(--white); border-radius: 6px; padding: 2rem; border: 1px solid var(--cream-dark); }
+    .info-block h3 { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600; color: var(--forest); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--cream-dark); }
+    .info-row { display: flex; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--cream-dark); font-size: 0.9rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-weight: 600; color: var(--charcoal); min-width: 80px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 0.1rem; }
+    .info-val { color: var(--muted); }
+    .info-val a { color: var(--amber); text-decoration: none; }
+    @media (max-width: 768px) { .location-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    .cta-section { background: linear-gradient(145deg, var(--forest) 0%, var(--forest-mid) 100%); text-align: center; padding: 5rem 2.5rem; }
+    .cta-section .section-h { color: var(--white); margin: 0 auto 1rem; max-width: 560px; }
+    .cta-section p { color: rgba(250,250,248,0.72); max-width: 500px; margin: 0 auto 2.5rem; font-size: 1rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-amber { background: var(--amber); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: background 0.2s; display: inline-block; }
+    .btn-amber:hover { background: var(--amber-light); }
+    .btn-ghost { border: 1.5px solid rgba(250,250,248,0.35); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 500; font-size: 0.9375rem; transition: border-color 0.2s; display: inline-block; }
+    .btn-ghost:hover { border-color: rgba(250,250,248,0.75); }
+
+    footer { background: #0D1A12; padding: 3.5rem 2.5rem 2rem; color: rgba(250,250,248,0.65); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(250,250,248,0.07); }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: 0.855rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber-light); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.45rem; }
+    .footer-col ul li a { color: rgba(250,250,248,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-col address { font-style: normal; font-size: 0.875rem; line-height: 1.9; }
+    .footer-col address a { color: var(--amber-light); text-decoration: none; }
+    .footer-bottom { max-width: 1180px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: var(--amber-light); text-decoration: none; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Southside <em>Family Medical</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="physicians.html">Our Physicians</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About Us</p>
+    <h1>A practice built on <em>relationship and continuity.</em></h1>
+    <p>For over two decades, Southside Family Medical Group has served Indianapolis's south side with physician-led, independent care that puts families first.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section" style="background: var(--cream);">
+  <div class="wrap">
+    <div class="mission-grid">
+      <div>
+        <p class="section-tag">Our Mission</p>
+        <h2 class="section-h">Caring for the <em>whole family.</em></h2>
+        <p class="prose">At Southside Family Medical Group, our mission is to provide our patients and their families with the highest quality healthcare available. We specialize in caring for patients of all ages — and we believe the best way to serve the individual is to serve the entire family.</p>
+        <p class="prose">We provide continuing and comprehensive care, delivering excellence in family medicine through innovative, practice-based health services. Whether you're bringing in a newborn for a first checkup or managing a long-term condition as an adult, we're committed to knowing your history and your goals.</p>
+        <p class="prose">Being a patient of a group practice also gives you additional flexibility — our physicians cover for each other, so your family is never left without a familiar, coordinated option.</p>
+      </div>
+      <div class="mission-stats">
+        <div class="stat-box"><div class="num">2</div><div class="lbl">Board-Certified Physicians</div></div>
+        <div class="stat-box"><div class="num">All Ages</div><div class="lbl">Children to Seniors</div></div>
+        <div class="stat-box"><div class="num">On-Site</div><div class="lbl">Lab & EKG Testing</div></div>
+        <div class="stat-box"><div class="num">South Indy</div><div class="lbl">Community-Rooted Since 2001</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section values-section">
+  <div class="wrap">
+    <p class="section-tag">Our Commitment</p>
+    <h2 class="section-h">What we stand for, <em>every day.</em></h2>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-num">01</div>
+        <h3>Clinical Excellence</h3>
+        <p>Our physicians are board-certified and stay current with evidence-based medicine to ensure every patient receives the best available care.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">02</div>
+        <h3>Continuity of Care</h3>
+        <p>We know your history because we've been your doctors. Continuity — not a new face every visit — is fundamental to how we practice.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">03</div>
+        <h3>Compassionate Staff</h3>
+        <p>From the moment you call to the moment you leave, our team is warm, attentive, and here to make every experience as easy as possible.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-num">04</div>
+        <h3>Billing You Can Trust</h3>
+        <p>Insurance and billing are handled in-house by professionals who understand the details — so you're not left navigating complex claims alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section location-section">
+  <div class="wrap">
+    <p class="section-tag">Find Us</p>
+    <h2 class="section-h">Conveniently located on <em>Indianapolis's south side.</em></h2>
+    <div class="location-grid" style="margin-top: 2.5rem;">
+      <div class="info-block">
+        <h3>Office Information</h3>
+        <div class="info-row"><span class="info-label">Address</span><span class="info-val">5955 S. Emerson Avenue, Suite 100<br>Indianapolis, IN 46237</span></div>
+        <div class="info-row"><span class="info-label">Phone</span><span class="info-val"><a href="tel:3174528400">317-452-8400</a></span></div>
+        <div class="info-row"><span class="info-label">Fax</span><span class="info-val">317-452-8484</span></div>
+        <div class="info-row"><span class="info-label">Doors Open</span><span class="info-val">Monday – Friday, 8:00am – 5:00pm</span></div>
+        <div class="info-row"><span class="info-label">Appointments</span><span class="info-val">Monday – Friday, 8:30am – 5:00pm</span></div>
+      </div>
+      <div class="info-block">
+        <h3>Scheduling & Access</h3>
+        <div class="info-row"><span class="info-label">New Patients</span><span class="info-val">Accepting new patients — call to schedule your first visit.</span></div>
+        <div class="info-row"><span class="info-label">Rx Refills</span><span class="info-val">Online refill requests available anytime for prescriptions on file.</span></div>
+        <div class="info-row"><span class="info-label">Coverage</span><span class="info-val">Both physicians cover for each other — your family is never without an option.</span></div>
+        <div class="info-row"><span class="info-label">Forms</span><span class="info-val">Patient forms available online to complete before your appointment.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <h2 class="section-h">We'd love to be <em>your family's doctor.</em></h2>
+    <p>We're accepting new patients. Call today or send us a message and we'll reach back out to get you on the schedule.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-amber">Schedule a Visit</a>
+      <a href="tel:3174528400" class="btn-ghost">Call 317-452-8400</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Southside Family Medical Group</h3>
+      <p>Independent family medicine serving Indianapolis's southside — comprehensive, compassionate care for patients of every age.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="physicians.html">Our Physicians</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact &amp; Hours</h4>
+      <address>
+        5955 S. Emerson Avenue, Suite 100<br>Indianapolis, IN 46237<br><br>
+        <a href="tel:3174528400">317-452-8400</a><br>Fax: 317-452-8484<br><br>
+        Mon–Fri: 8:00am – 5:00pm
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Southside Family Medical Group. All rights reserved.</p>
+    <p>Website concept by <a href="#">Pavlina</a></p>
+  </div>
+</footer>
+</body>
+</html>

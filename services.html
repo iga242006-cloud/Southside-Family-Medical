@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Southside Family Medical Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B3A2B; --forest-mid: #254D3A; --sage: #5B8B6A;
+      --amber: #B87418; --amber-light: #D4941A;
+      --cream: #F5F2EB; --cream-dark: #EAE6DC;
+      --charcoal: #262626; --muted: #687068; --white: #FAFAF8;
+      --font-serif: 'Lora', Georgia, serif; --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(27,58,43,0.97); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 66px; border-bottom: 1px solid rgba(91,139,106,0.25); }
+    .nav-logo { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); text-decoration: none; }
+    .nav-logo em { font-style: normal; color: var(--amber-light); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a { color: rgba(250,250,248,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-light); }
+    .nav-cta { background: var(--amber) !important; color: var(--white) !important; padding: 0.45rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    .page-hero { background: var(--forest); padding: 8.5rem 2.5rem 4.5rem; }
+    .page-hero-inner { max-width: 1180px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.75rem; color: rgba(250,250,248,0.45); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--amber-light); text-decoration: none; }
+    .page-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; color: var(--white); line-height: 1.18; max-width: 640px; }
+    .page-hero h1 em { font-style: italic; color: var(--amber-light); }
+    .page-hero p { font-size: 1.05rem; color: rgba(250,250,248,0.68); max-width: 500px; margin-top: 1rem; line-height: 1.75; font-weight: 300; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .section { padding: 5rem 2.5rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.65rem; }
+    .section-h { font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.4rem); font-weight: 600; color: var(--forest); line-height: 1.22; margin-bottom: 0.9rem; }
+    .section-h em { font-style: italic; color: var(--amber); }
+
+    /* Main services */
+    .svc-main { background: var(--cream); }
+    .svc-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+      padding: 4rem 0; border-bottom: 1px solid var(--cream-dark);
+    }
+    .svc-block:first-of-type { padding-top: 2.5rem; }
+    .svc-block:last-of-type { border-bottom: none; }
+    .svc-block.reverse { direction: rtl; }
+    .svc-block.reverse > * { direction: ltr; }
+    .svc-visual {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 60%, var(--sage) 100%);
+      border-radius: 8px; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .svc-content h2 { font-family: var(--font-serif); font-size: 1.625rem; font-weight: 600; color: var(--forest); margin-bottom: 0.75rem; }
+    .svc-content h2 em { font-style: italic; color: var(--amber); }
+    .svc-content p { font-size: 0.9875rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .svc-bullets { list-style: none; margin-top: 1.25rem; }
+    .svc-bullets li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.9rem; color: var(--charcoal); padding: 0.5rem 0; border-bottom: 1px solid var(--cream-dark); }
+    .svc-bullets li:last-child { border-bottom: none; }
+    .svc-bullets li::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; margin-top: 0.45rem; flex-shrink: 0; }
+    @media (max-width: 768px) { .svc-block, .svc-block.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; } }
+
+    /* ancillary */
+    .ancillary-section { background: var(--forest); }
+    .ancillary-section .section-tag { color: var(--amber-light); }
+    .ancillary-section .section-h { color: var(--white); }
+    .anc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .anc-card { background: rgba(91,139,106,0.1); border: 1px solid rgba(91,139,106,0.18); border-radius: 6px; padding: 1.75rem; }
+    .anc-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .anc-card h3 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .anc-card p { font-size: 0.875rem; color: rgba(250,250,248,0.65); line-height: 1.65; }
+
+    .cta-section { background: linear-gradient(145deg, var(--forest) 0%, var(--forest-mid) 100%); text-align: center; padding: 5rem 2.5rem; }
+    .cta-section .section-h { color: var(--white); margin: 0 auto 1rem; max-width: 560px; }
+    .cta-section p { color: rgba(250,250,248,0.72); max-width: 480px; margin: 0 auto 2.5rem; font-size: 1rem; }
+    .btn-amber { background: var(--amber); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 0.9375rem; transition: background 0.2s; display: inline-block; }
+    .btn-amber:hover { background: var(--amber-light); }
+    .btn-ghost { border: 1.5px solid rgba(250,250,248,0.35); color: var(--white); padding: 0.9rem 2.1rem; border-radius: 3px; text-decoration: none; font-weight: 500; font-size: 0.9375rem; transition: border-color 0.2s; display: inline-block; }
+    .btn-ghost:hover { border-color: rgba(250,250,248,0.75); }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: #0D1A12; padding: 3.5rem 2.5rem 2rem; color: rgba(250,250,248,0.65); }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(250,250,248,0.07); }
+    .footer-brand h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: 0.855rem; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber-light); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.45rem; }
+    .footer-col ul li a { color: rgba(250,250,248,0.6); text-decoration: none; font-size: 0.875rem; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-col address { font-style: normal; font-size: 0.875rem; line-height: 1.9; }
+    .footer-col address a { color: var(--amber-light); text-decoration: none; }
+    .footer-bottom { max-width: 1180px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: var(--amber-light); text-decoration: none; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Southside <em>Family Medical</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="physicians.html">Our Physicians</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Schedule a Visit</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Services</p>
+    <h1>Comprehensive care, <em>under one roof.</em></h1>
+    <p>More services in one practice means fewer referrals, fewer trips across town, and a physician team that sees the whole picture of your health.</p>
+  </div>
+</section>
+
+<!-- MAIN SERVICES -->
+<section class="section svc-main">
+  <div class="wrap">
+    <p class="section-tag">Core Services</p>
+    <h2 class="section-h">What we offer <em>every patient.</em></h2>
+
+    <div class="svc-block">
+      <div class="svc-visual">🩺</div>
+      <div class="svc-content">
+        <h2>Family Medicine <em>for Every Age</em></h2>
+        <p>From a newborn's first well-child visit to managing chronic conditions in a senior patient, Southside Family Medical Group provides the full spectrum of primary care — delivered by physicians who know your family's history.</p>
+        <p>We believe the best medicine is continuous medicine. When your physician has seen you through multiple phases of life, every appointment starts with context — not a blank page.</p>
+        <ul class="svc-bullets">
+          <li>Annual wellness exams and physicals</li>
+          <li>Acute illness and same-week sick visits</li>
+          <li>Chronic disease management (diabetes, hypertension, thyroid, etc.)</li>
+          <li>Pediatric and adolescent care</li>
+          <li>Geriatric and senior care</li>
+          <li>Immunizations and preventive screenings</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-block reverse">
+      <div class="svc-visual">🧪</div>
+      <div class="svc-content">
+        <h2>On-Site <em>Laboratory Testing</em></h2>
+        <p>When your physician needs blood work or lab results to guide your care, we handle it right here in the office. No referral to a separate lab facility, no extra trip across town, no delay waiting for records to transfer.</p>
+        <p>On-site lab capability means faster results, faster decisions, and care that doesn't lose momentum between appointments.</p>
+        <ul class="svc-bullets">
+          <li>Blood draws and CBC panels</li>
+          <li>Metabolic and lipid panels</li>
+          <li>Urinalysis</li>
+          <li>Diabetes monitoring (A1C)</li>
+          <li>Thyroid function testing</li>
+          <li>Rapid strep and flu tests</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="svc-block">
+      <div class="svc-visual">❤️</div>
+      <div class="svc-content">
+        <h2>Electrocardiogram <em>(EKG / ECG)</em></h2>
+        <p>Cardiac screening available directly in our office. When your physician needs a closer look at your heart rhythm or electrical activity, you don't have to be sent elsewhere — we can perform the EKG on the spot.</p>
+        <p>On-site EKG testing is part of our commitment to reducing the inconvenience that comes with fragmented healthcare — keeping your care coordinated and moving.</p>
+        <ul class="svc-bullets">
+          <li>Resting 12-lead EKG</li>
+          <li>Cardiac screening for new patients and annual visits</li>
+          <li>Pre-operative clearance evaluations</li>
+          <li>Arrhythmia and palpitation workup support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANCILLARY -->
+<section class="section ancillary-section">
+  <div class="wrap">
+    <p class="section-tag">Additional Services</p>
+    <h2 class="section-h">More ways we <em>serve you.</em></h2>
+    <div class="anc-grid">
+      <div class="anc-card">
+        <div class="anc-icon">💊</div>
+        <h3>Online Prescription Refills</h3>
+        <p>Refill any prescription currently on file — online, any time of day or night, from home or work. No office visit required for routine renewals.</p>
+      </div>
+      <div class="anc-card">
+        <div class="anc-icon">👨‍👩‍👧</div>
+        <h3>Whole-Family Continuity</h3>
+        <p>Both physicians provide mutual coverage. If your primary doctor is unavailable, a familiar and fully informed physician is always available to your family.</p>
+      </div>
+      <div class="anc-card">
+        <div class="anc-icon">📋</div>
+        <h3>Patient Forms & Check-In</h3>
+        <p>Complete your intake forms in advance — online and printable — to speed up your check-in process and spend less time in the waiting room.</p>
+      </div>
+      <div class="anc-card">
+        <div class="anc-icon">🏥</div>
+        <h3>Insurance & Billing Support</h3>
+        <p>Billing handled in-house by experienced professionals who understand the nuances of insurance plans — so you're not navigating complex claims alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap">
+    <h2 class="section-h">Ready to experience <em>care that connects?</em></h2>
+    <p>We're accepting new patients across all services. Reach out today to schedule your first visit.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-amber">Schedule a Visit</a>
+      <a href="tel:3174528400" class="btn-ghost">Call 317-452-8400</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Southside Family Medical Group</h3>
+      <p>Independent family medicine serving Indianapolis's southside — comprehensive, compassionate care for patients of every age.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="physicians.html">Our Physicians</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact &amp; Hours</h4>
+      <address>
+        5955 S. Emerson Avenue, Suite 100<br>Indianapolis, IN 46237<br><br>
+        <a href="tel:3174528400">317-452-8400</a><br>Fax: 317-452-8484<br><br>
+        Mon–Fri: 8:00am – 5:00pm
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Southside Family Medical Group. All rights reserved.</p>
+    <p>Website concept by <a href="#">Pavlina</a></p>
+  </div>
+</footer>
+</body>
+</html>
